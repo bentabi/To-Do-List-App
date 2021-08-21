@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+User's Home page
+{% endblock %}
+{% block content %}
+    {% if user.username %}  
+        <img src="{{ user.avatar(128) }}"><br>   
+        <h1>{{ user.username }}'s Webpage</h1>
+        <p class="message">Hi, this is {{ user.username }}'s Webpage.</p><br>
+        {% for user in users %}
+            {% include '_view.html' %}
+        {% endfor %}        
+    {% else %}
+        <p class="message">Provide the name after /user/ in the URL.</p>
+    {% endif %}
+{% endblock %}   
